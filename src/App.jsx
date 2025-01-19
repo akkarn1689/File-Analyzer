@@ -10,36 +10,33 @@ const App = () => {
 
 
   const handleFileUpload = async (uploadedFile) => {
-    setFile(uploadedFile); // Update the state with the uploaded file
+    setFile(uploadedFile);
   
     const formData = new FormData();
     formData.append("file", uploadedFile);
   
     try {
-      // Use fetch instead of axios
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/upload`, {
         method: "POST",
         body: formData,
         headers: {
-          Accept: "application/json", // Set Accept header
+          Accept: "application/json",
         },
-        credentials: "include", // Include credentials for cross-origin requests
       });
   
       if (!response.ok) {
-        // Handle errors returned by the server
         const errorData = await response.json();
         console.error("Error from server:", errorData);
         throw new Error(errorData.error || "Failed to upload and process the file.");
       }
   
-      const result = await response.json(); // Parse JSON response
-      setExtractedData(result.data); // Update the state with extracted data
+      const result = await response.json();
+      setExtractedData(result.data);
     } catch (error) {
-      // Handle any unexpected errors
       console.error("Error extracting text:", error);
     }
   };
+  
   
 
   return (
