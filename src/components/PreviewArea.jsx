@@ -73,7 +73,7 @@ const PreviewArea = ({ file, extractedData }) => {
       <Paper elevation={2} sx={{ p: 3 }}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, mb: 2 }}>
           <DataObjectIcon />
-          <Typography variant="h6">Extracted Data</Typography>
+          <Typography variant="h6">Analyzed Content</Typography>
         </Box>
         <Box
           sx={{
